@@ -1,0 +1,14 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'polls/index.css' %}">
+    </head>
+    <body>
+        <p class="text">LOGIN</p>
+        <form action="/login" method="post">
+            <p><input name="id" class="psid" type="text" placeholder="ID"></p>
+            <p><input name="pw" class="psid" type="password" placeholder="PASSWORD"></p>
+            <input class="submit" type="submit">
+        </form>
+    </body>
+</html>
