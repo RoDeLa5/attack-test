@@ -21,7 +21,11 @@ def register():
 def exist(id: str, pw: str) -> bool:
     conn = sqlite3.connect('test.db')
     cur = conn.cursor()
-    cur = cur.execute(f"SELECT * FROM TESTTABLE WHERE id='{id}' AND pw='{pw}'")
+
+    # Send values as parameters
+    cur = cur.execute(f"SELECT * FROM TESTTABLE WHERE id=:id AND pw=:pw",
+                      {'id': id, 'pw': pw})
+
     rows = cur.fetchall()
     print(rows)
     return bool(len(rows))
