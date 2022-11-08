@@ -19,6 +19,12 @@ def register():
 
 
 def exist(id: str, pw: str) -> bool:
+
+    # Add blacklist check for dangerous characters
+    for blacklist_word in '\'\"\\-#()@;=*/+[]':
+        if blacklist_word in id or blacklist_word in pw:
+            return False
+
     conn = sqlite3.connect('test.db')
     cur = conn.cursor()
     cur = cur.execute(f"SELECT * FROM TESTTABLE WHERE id='{id}' AND pw='{pw}'")
